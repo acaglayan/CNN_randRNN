@@ -76,7 +76,7 @@ class WashingtonDataset(Dataset):
                 #print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
 
                 for file in fnmatch.filter(os.listdir(instance_path), suffix):
-                    if test_instances[cat_ind-1] == instance.split('_')[-1]:
+                    if test_instances[cat_ind-1] == np.uint8(instance.split('_')[-1]):
                         self.data['test'].append(file)
                         self.paths['test'].append(os.path.join(instance_path, file))
                         self.labels['test'].append(cat_ind)
@@ -85,6 +85,7 @@ class WashingtonDataset(Dataset):
                         self.data['train'].append(file)
                         self.paths['train'].append(os.path.join(instance_path, file))
                         self.labels['train'].append(cat_ind)
+
 
 if __name__== '__main__':
     dataset_path = '/media/ali/ssdmain/Datasets/wrgbd/'
