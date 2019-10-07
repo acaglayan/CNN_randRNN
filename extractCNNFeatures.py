@@ -5,6 +5,7 @@ from torch.utils.data import Dataset
 import os
 
 import scipy.io as io
+import fnmatch
 import wrgbd51
 
 
@@ -46,6 +47,8 @@ class WashingtonDataset(Dataset):
         self.split = split
         self.transform = transform
         self.data = []
+        self.labels = []
+        self.paths = []
         self._init_dataset()
 
     def __getitem__(self, item):
@@ -59,8 +62,6 @@ class WashingtonDataset(Dataset):
         test_instances = split_data[:, self.split - 1]
         categories = set()
         instances = set()
-        print(test_instances)
-        i = 0
 
         for category in os.listdir(self.data_path):
             category_path = os.path.join(self.data_path, category)
@@ -70,31 +71,24 @@ class WashingtonDataset(Dataset):
             for instance in os.listdir(category_path):
                 instance_path = os.path.join(category_path, instance)
                 instances.add(instance)
-                i += 1
                 #print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
 
-
-                #with open(instance_path, 'r') as instance_file:
-                #    print(instance_file)
-
                 if test_instances[cat_ind-1] == instance.split('_')[-1]:
-                    self.data['test'] = self.add_instance(instance_path, cat_ind)
+                    self.add_instance(instance_path, cat_ind)
                 else:
-                    self.data['train'] = self.add_instance(instance_path, cat_ind)
+                    self.add_instance(instance_path, cat_ind)
 
-    def add_instance(self, instance_path, cat_ind):
+    def add_instance(self, instance_path, cat_ind, data_split):
         if self.data_type == 'rgb':
-            suffix = '_crop.png'
+            suffix = '*_crop.png'
         else:
-            suffix = '_depthcrop.png'
+            suffix = '*_depthcrop.png'
 
-        for file in os.listdir(instance_path):
-            filename = file.split(suffix)
+        for file in fnmatch.filter(os.listdir(instance_path), suffix):
 
-
-
-
-        return self.data
+            self.paths.append(os.path.join(instance_path, file))
+            self.data.append(file)
+            self.labels.append(cat_ind)
 
 
 if __name__== '__main__':
