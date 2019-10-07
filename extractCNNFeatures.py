@@ -7,6 +7,7 @@ import os
 import scipy.io as io
 import fnmatch
 import wrgbd51
+import collections
 
 
 # Data augmentation and normalization for training
@@ -46,9 +47,9 @@ class WashingtonDataset(Dataset):
         self.split_path = split_path
         self.split = split
         self.transform = transform
-        self.data = []
-        self.labels = []
-        self.paths = []
+        self.data = collections.defaultdict(list)
+        self.labels = collections.defaultdict(list)
+        self.paths = collections.defaultdict(list)
         self._init_dataset()
 
     def __getitem__(self, item):
@@ -60,36 +61,30 @@ class WashingtonDataset(Dataset):
     def _init_dataset(self):
         split_data = io.loadmat(split_file)['splits'].astype(np.uint8)
         test_instances = split_data[:, self.split - 1]
-        categories = set()
-        instances = set()
 
-        for category in os.listdir(self.data_path):
-            category_path = os.path.join(self.data_path, category)
-            categories.add(category)
-            cat_ind = int(wrgbd51.class_name_to_id[category])
-
-            for instance in os.listdir(category_path):
-                instance_path = os.path.join(category_path, instance)
-                instances.add(instance)
-                #print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
-
-                if test_instances[cat_ind-1] == instance.split('_')[-1]:
-                    self.add_instance(instance_path, cat_ind)
-                else:
-                    self.add_instance(instance_path, cat_ind)
-
-    def add_instance(self, instance_path, cat_ind, data_split):
         if self.data_type == 'rgb':
             suffix = '*_crop.png'
         else:
             suffix = '*_depthcrop.png'
 
-        for file in fnmatch.filter(os.listdir(instance_path), suffix):
+        for category in os.listdir(self.data_path):
+            category_path = os.path.join(self.data_path, category)
+            cat_ind = int(wrgbd51.class_name_to_id[category])
 
-            self.paths.append(os.path.join(instance_path, file))
-            self.data.append(file)
-            self.labels.append(cat_ind)
+            for instance in os.listdir(category_path):
+                instance_path = os.path.join(category_path, instance)
+                #print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
 
+                for file in fnmatch.filter(os.listdir(instance_path), suffix):
+                    if test_instances[cat_ind-1] == instance.split('_')[-1]:
+                        self.data['test'].append(file)
+                        self.paths['test'].append(os.path.join(instance_path, file))
+                        self.labels['test'].append(cat_ind)
+                        print(os.path.join(instance_path, file))
+                    else:
+                        self.data['train'].append(file)
+                        self.paths['train'].append(os.path.join(instance_path, file))
+                        self.labels['train'].append(cat_ind)
 
 if __name__== '__main__':
     dataset_path = '/media/ali/ssdmain/Datasets/wrgbd/'
