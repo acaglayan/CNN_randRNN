@@ -2,7 +2,6 @@ from __future__ import print_function, division
 
 import numpy as np
 from torch.utils.data import Dataset
-from torchvision.datasets import DatasetFolder
 import os
 
 import scipy.io as io
@@ -43,10 +42,10 @@ import argparse
 
 
 class WashingtonDataset(Dataset):
-    def __init__(self, data_path, split_path, data_type='crop', split=1, transform=None):
+    def __init__(self, data_path, split_file, data_type='rgb', split=1, transform=None):
         self.data_path = data_path
         self.data_type = data_type
-        self.split_path = split_path
+        self.split_file = split_file
         self.split = split
         self.transform = transform
         self.data = collections.defaultdict(list)
@@ -54,60 +53,66 @@ class WashingtonDataset(Dataset):
         self.paths = collections.defaultdict(list)
         self._init_dataset()
 
-    def __getitem__(self, item):
+    def __getitem__(self, index):
+        
         raise NotImplementedError
 
-    def __len__(self, other):
-        raise NotImplementedError
+    def __len__(self):
+        return len(self.labels['train']) + len(self.labels['test'])
 
     def _init_dataset(self):
-        split_data = io.loadmat(self.split_path)['splits'].astype(np.uint8)
+        split_data = io.loadmat(self.split_file)['splits'].astype(np.uint8)
         test_instances = split_data[:, self.split - 1]
 
-        suffix = '*_' + self.data_type + ".png"
+        suffix = '*_' + self.data_type + '.png'
+
         for category in os.listdir(self.data_path):
             category_path = os.path.join(self.data_path, category)
             cat_ind = int(wrgbd51.class_name_to_id[category])
 
             for instance in os.listdir(category_path):
                 instance_path = os.path.join(category_path, instance)
-                # print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
+                #print('c: {} : {} i: {} {} token: {}'.format(cat_ind, category, i, instance, instance.split('_')[-1]))
 
                 for file in fnmatch.filter(os.listdir(instance_path), suffix):
-                    if test_instances[cat_ind - 1] == np.uint8(instance.split('_')[-1]):
+                    if test_instances[cat_ind-1] == np.uint8(instance.split('_')[-1]):
                         self.data['test'].append(file)
                         self.paths['test'].append(os.path.join(instance_path, file))
                         self.labels['test'].append(cat_ind)
-                        print(os.path.join(instance_path, file))
                     else:
                         self.data['train'].append(file)
                         self.paths['train'].append(os.path.join(instance_path, file))
                         self.labels['train'].append(cat_ind)
 
 
-def get_options():
+def get_params():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument("--dataset-path", dest="dataset_path", default="/media/ali/ssdmain/Datasets/wrgbd",
-                        help="Path to dataset root")
-    parser.add_argument("--data-dir", dest="data_dir", default="eval-set",
-                        help="Data dir")
-    parser.add_argument("--split-file", dest="split_file", default="splits.mat", help="split file name, must be under"
-                                                                                      " --dataset-path")
-    parser.add_argument("--data-type", dest="data_type", default="crop", choices=['crop', 'depthcrop', 'maskcrop'],
-                        type=str.lower, help="Data type to process")
+    parser.add_argument("--dataset-path", dest="dataset_path", default="/media/ali/ssdmain/Datasets/wrgbd/",
+                        help="Path to the dataset root")
+    parser.add_argument("--data-path", dest="data_dir", default="eval-set", help="Data dir")
+    parser.add_argument("--split-file", dest="split_file", default="splits.mat", help="split file name, must be under "
+                                                                                     "--dataset-path")
+    parser.add_argument("--data-type", dest="data_type", default="crop", choices=['crop', 'depthcrop'], type=str.lower,
+                        help="data type to process, crop for rgb, depthcrop for depth data")
+    parser.add_argument("--split", dest="split", default=1, type=int, choices=range(1, 11),
+                        help="current split number to process, is between 1 to 10")
 
-    options = parser.parse_args()
-    return options
+    params = parser.parse_args()
+    return params
 
 
 def main():
-    options = get_options()
-    data_dir = os.path.join(options.dataset_path, options.data_dir)
-    split_file = os.path.join(options.dataset_path, options.split_file)
+    params = get_params()
+    data_dir = os.path.join(params.dataset_path, params.data_dir)
+    split_file = os.path.join(params.dataset_path, params.split_file)
 
-    wrgbd = WashingtonDataset(data_dir, split_file, data_type=options.data_type, split=1)
+    wrgbd = WashingtonDataset(data_dir, split_file, data_type=params.data_type, split=params.split)+
 
 
 if __name__ == '__main__':
     main()
+
+
+
+
