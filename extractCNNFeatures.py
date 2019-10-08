@@ -42,7 +42,7 @@ import argparse
 
 
 class WashingtonDataset(Dataset):
-    def __init__(self, data_path, split_file, data_type='rgb', split=1, transform=None):
+    def __init__(self, data_path, split_file, data_type='crop', split=1, transform=None):
         self.data_path = data_path
         self.data_type = data_type
         self.split_file = split_file
@@ -54,7 +54,7 @@ class WashingtonDataset(Dataset):
         self._init_dataset()
 
     def __getitem__(self, index):
-        
+
         raise NotImplementedError
 
     def __len__(self):
@@ -107,7 +107,7 @@ def main():
     data_dir = os.path.join(params.dataset_path, params.data_dir)
     split_file = os.path.join(params.dataset_path, params.split_file)
 
-    wrgbd = WashingtonDataset(data_dir, split_file, data_type=params.data_type, split=params.split)+
+    wrgbd = WashingtonDataset(data_dir, split_file, data_type=params.data_type, split=params.split)
 
 
 if __name__ == '__main__':
