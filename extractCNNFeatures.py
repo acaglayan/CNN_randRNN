@@ -6,6 +6,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from sklearn import svm
 from torch.nn import init
 from torch.optim import lr_scheduler
 from torch.utils.data import Dataset
@@ -83,19 +84,48 @@ class WashingtonDataset(Dataset):
 
 
 class AlexNetExtractor(nn.Module):
-    def __init__(self, submodule, extracted_layers):
+    def __init__(self, submodule, extracted_layer):
         super(AlexNetExtractor, self).__init__()
         self.submodule = submodule
-        self.extracted_layers = extracted_layers
+        self.extracted_layer = extracted_layer
+        if self.extracted_layer < 6:
+            self.features = self._get_features()
 
     def forward(self, x):
-        outputs = []
-        for name, module in self.submodule._modules.items():
-            x = module(x)
-            print(name)
-            if name in self.extracted_layers:
-                outputs.append(x)
-        return outputs
+        if self.extracted_layer < 6:
+            x = self.features(x)
+        else:
+            self.submodule.classifier = self._get_classifier()
+            x = self.submodule(x)
+        return x
+
+    def _get_features(self):
+        index = self._find_index()
+        features = nn.Sequential(
+            # stop at the layer
+            *list(self.submodule.features.children())[:index]
+        )
+        return features
+
+    def _get_classifier(self):
+        index = self._find_index()
+        classifier = nn.Sequential(
+            # stop at the layer
+            *list(self.submodule.classifier.children())[:index]
+        )
+        return classifier
+
+    def _find_index(self):
+        switcher = {
+            1: 3,   # from features
+            2: 6,
+            3: 8,
+            4: 10,
+            5: 13,
+            6: 3,   # from classifier
+            7: 6
+        }
+        return switcher.get(self.extracted_layer)
 
 
 def colorized_depth(path):
@@ -268,8 +298,20 @@ def visualize_model(model, data_loaders, device, num_images=6):
         model.train(mode=was_training)
 
 
+def extract_features(extractor, data_loader):
+    since = time.time()
+    features = []
+    targets = []
+    for inputs, labels in data_loader:
+        feats = extractor(inputs)
+        features.append(feats)
+        targets.append(labels)
+    return features, targets
+
+
 def main():
     plt.ion()
+    #device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     params = get_params()
     data_dir = os.path.join(params.dataset_path, params.data_dir)
     split_file = os.path.join(params.dataset_path, params.split_file)
@@ -280,9 +322,10 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
-    training_set = WashingtonDataset(data_dir, split_file, data_type='crop', split=1, mode='train',
+    training_set = WashingtonDataset(data_dir, split_file, params.data_type, params.split, mode='train',
                                      loader=pil_loader, transform=train_form)
-    train_loader = torch.utils.data.DataLoader(training_set, batch_size=32, shuffle=True)
+    batch_size = 32
+    train_loader = torch.utils.data.DataLoader(training_set, batch_size, shuffle=True)
 
     test_form = transforms.Compose([
         transforms.Resize(256),
@@ -290,68 +333,45 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
-    test_set = WashingtonDataset(data_dir, split_file, data_type='crop', split=1, mode='test',
+    test_set = WashingtonDataset(data_dir, split_file, params.data_type, params.split, mode='test',
                                  loader=pil_loader, transform=test_form)
-    test_loader = torch.utils.data.DataLoader(test_set, batch_size=32, shuffle=False)
+    test_loader = torch.utils.data.DataLoader(test_set, batch_size, shuffle=False)
 
     # for i, data_samples in enumerate(train_loader):
     #    img, target = data_samples
+
+    # inputs, classes = next(iter(train_loader))
 
     # print(training_set.__len__())
 
     # inputs, classes = next(iter(train_loader))
     # out = torchvision.utils.make_grid(inputs)
     # imshow(out, title=[wrgbd51.class_id_to_name[str(x)] for x in np.array(classes)])
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # load a pretrained model and reset final fully connected layer
     model_ft = models.alexnet(pretrained=True)
+    extracted_layer = 1
+    extractor = AlexNetExtractor(model_ft, extracted_layer)
 
-    # here we need to freeze all the network except the final layer.
-    # We need to set requires_grad == False to freeze the parameters
-    # so that the gradients are not computed in backward()
-    for param in model_ft.parameters():
-        param.requires_grad = False
+    # train_features, train_labels = extract_features(extractor, train_loader)
+    test_features, test_labels = extract_features(extractor, test_loader)
 
-    input, label = next(iter(test_loader))
-    inp = input[1, :, :, :]
-    lab = label[1]
-    print('{} {} {} {}'.format(input.size(), label.size(), inp.size(), lab))
+    print('train: {} {} /t test: {} {}'.format(  # train_features.__sizeof__(), train_labels.__sizeof__(),
+                                               test_features.__sizeof__(), test_labels.__sizeof__()))
 
-    extractor = AlexNetExtractor(model_ft, ["conv1"])
-    x = extractor(inp)
-
-    # num_ftrs = model_ft.fc.in_features
-    # Here the size of each output sample is set to 2.
-    # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
-    # model_ft.fc = nn.Linear(num_ftrs, wrgbd51.class_names.__len__())
-
-#    model_ft.classifier = nn.Sequential(
-#        nn.Dropout(p=0.7),
-#        nn.Linear(256 * 6 * 6, 4096),
-#        nn.ReLU(inplace=True),
-#        nn.Dropout(p=0.7),
-#        nn.Linear(4096, 4096),
-#        nn.ReLU(inplace=True),
-#        nn.Linear(4096, wrgbd51.class_names.__len__()),
-#    )
-
-#    model_ft = model_ft.to(device)
-#    criterion = nn.CrossEntropyLoss()
-
-    # Observe that all parameters are being optimized
-#    optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
-
-#    dataset_sizes = {'train': training_set.__len__(), 'test': test_set.__len__()}
-#    data_loaders = {'train': train_loader, 'test': test_loader}
-
-    # Decay LR by a factor of 0.1 every 7 epochs
-#    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-#    model_ft = train_eval_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, data_loaders,
-#                                dataset_sizes, device, num_epochs=25)
-#    visualize_model(model_ft, data_loaders, device, num_images=6)
-#    plt.ioff()
-#    plt.show()
+    # train_inputs, train_labels = next(iter(train_loader))
+    #
+    # train_features = extractor(train_inputs)
+    #
+    # test_inputs, test_labels = next(iter(test_loader))
+    # test_features = extractor(test_inputs)
+    #
+    # device = torch.device("cpu")
+    #
+    # lin_clf = svm.LinearSVC()
+    # lin_clf.fit(train_features.detach().numpy(), train_labels)
+    # preds = lin_clf.predict(test_features.detach().numpy())
+    # print('{}'.format(np.mean(preds == test_labels.numpy()) * 100))
 
 
 if __name__ == '__main__':
