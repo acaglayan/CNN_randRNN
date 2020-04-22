@@ -1,17 +1,17 @@
 # When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition
 
-# Introduction
+## Introduction
 
-# Feature Highlights
+### Feature Highlights
 
-# Installation
-# Requirements
-# Setup
+## Installation
+### Requirements
+### Setup
 
-# Getting Started
+## Getting Started
 
-# Acknowledgment
+## Acknowledgment
 
-# License
+## License
 
-# Citation
+## Citation
