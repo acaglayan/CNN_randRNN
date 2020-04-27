@@ -7,7 +7,7 @@ This repository presents the implementation of a general two-stage framework tha
 - Support both one-stage CNN feature extraction and two-stage incorporation of CNN-randRNN feature extraction.
 - Applicable to AlexNet, VGGNet-16, ResNet-50, ResNet-101, DenseNet-121 as backbone CNN models.
 - Pretrained models can be used as fixed feature extractors in a fast way. They also can be used after performing finetuning.
-- A novel random pooling strategy based on uniform randomness in RNNs is presented to cope with the high dimensionality of inputs.
+- A novel random pooling strategy, which extends the uniform randomness in RNNs, is presented to cope with the high dimensionality of inputs.
 - A soft voting approach based on individual SVM confidences for multi-modal fusion has been presented.
 - An effective depth colorization based on surface normals has been presented.
 - Clear and extendible code structure for supporting more datasets and applying to new ideas.
