@@ -18,8 +18,29 @@ Supported backbone models and their average computational time and memory overhe
 
 
 ## Installation
-### Requirements
+### System Requirements
+All the codes are tested with the abovementioned environment. System requirements for each model are reported on the above model zoo table. Ideally, it would be better if you have a multi-core processor, 32 GB RAM, graphics card with at least 10 GB memory, and enough disk space to store models, features, etc. depending on your saving choices and initial parameters.
 ### Setup 
+Conda has been used as the virtual environment manager and package manager. You can use either `pip` or `conda` (or both) for package management. Before starting you need install following libraries:
+* PyTorch
+* Scikit-learn
+* OpenCV
+* psutil and h5py libs.
+We have installed these libraries with `conda` as below:
+1. Install Pytorch according to your system preferences such as OS, package manager, and CUDA version (see more [here](https://pytorch.org/get-started/locally/)): <br />
+e.g. `conda install pytorch torchvision cudatoolkit=10.0 -c pytorch` <br />
+This will install some other libs including `numpy`, `pillow`, etc. <br />
+
+2. Install `scikit-learn`: <br />
+e.g. `conda install scikit-learn` <br />
+
+3. Install OpenCV library: <br />
+e.g. `conda install opencv` <br />
+
+4. Install `psutil` and `h5py` libs: <br />
+e.g. `conda install psutil` <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`conda install h5py` <br />
+
 
 ## Getting Started
 
