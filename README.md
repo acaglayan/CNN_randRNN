@@ -45,7 +45,16 @@ e.g. `conda install psutil` <br />
 ## Getting Started
 
 ## Acknowledgment
-
+This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
 ## License
 
 ## Citation
+If you find this work useful in your research, please consider citing:
+```
+@article{Caglayan2020CNNrandRNN,
+  title={When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition},
+  author={Ali Caglayan and Nevrez Imamoglu and Ahmet Burak Can and Ryosuke Nakamura},
+  journal={arXiv preprint arXiv:2004.12349},
+  year={2020}
+}
+```
