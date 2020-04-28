@@ -21,7 +21,7 @@ Supported backbone models and their average computational time and memory overhe
 ### System Requirements
 All the codes are tested with the abovementioned environment. System requirements for each model are reported on the above model zoo table. Ideally, it would be better if you have a multi-core processor, 32 GB RAM, graphics card with at least 10 GB memory, and enough disk space to store models, features, etc. depending on your saving choices and initial parameters.
 ### Setup 
-Conda has been used as the virtual environment manager and package manager. You can use either `pip` or `conda` (or both) for package management. Before starting you need install following libraries:
+Conda has been used as the virtual environment manager and package manager. You can use either `pip` or `conda` (or both) for package management. Before starting you need to install following libraries:
 * PyTorch
 * Scikit-learn
 * OpenCV
