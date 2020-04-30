@@ -37,7 +37,7 @@ This will install some other libs including `numpy`, `pillow`, etc. <br />
 e.g. `conda install scikit-learn` <br />
 
 3. Install OpenCV library: <br />
-e.g. `conda install opencv` <br />
+e.g. `conda install -c conda-forge opencv` <br />
 
 4. Install `psutil` and `h5py` libs: <br />
 e.g. `conda install psutil` <br />
