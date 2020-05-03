@@ -48,6 +48,7 @@ e.g. `conda install psutil` <br />
 ### Data Preparation
 1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
 ![](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/wrgbd_view.png)
+
 To convert depth maps to colorized RGB-like depth representations:
 ```
 sh run_steps.sh step="COLORIZED_DEPTH_SAVE"
