@@ -45,6 +45,16 @@ e.g. `conda install psutil` <br />
 
 
 ## Getting Started
+### Data Preparation
+1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
+![](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/wrgbd_view.png)
+To convert depth maps to colorized RGB-like depth representations:
+```
+sh run_steps.sh step="COLORIZED_DEPTH_SAVE"
+python main_steps.py --dataset-path "../data/wrgbd/" --data-type "depthcrop" --debug-mode 0
+```
+Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export PYTHONPATH=$PYTHONPATH:/home/user/path_to_project/CNN_randRNN/src/utils`). `debug-mode` with 1 runs the framework for a small proportion of data (you can choose the size with `debug-size` parameter, which sets the number of samples for each instance.) This will create colorized depth images under the `/data/wrgbd/outputs/colorized_depth_images`.
+2- 
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
