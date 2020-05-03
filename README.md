@@ -55,6 +55,7 @@ sh run_steps.sh step="COLORIZED_DEPTH_SAVE"
 python main_steps.py --dataset-path "../data/wrgbd/" --data-type "depthcrop" --debug-mode 0
 ```
 Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export PYTHONPATH=$PYTHONPATH:/home/user/path_to_project/CNN_randRNN/src/utils`). `debug-mode` with 1 runs the framework for a small proportion of data (you can choose the size with `debug-size` parameter, which sets the number of samples for each instance.) This will create colorized depth images under the `/data/wrgbd/outputs/colorized_depth_images`.
+
 2- 
 
 ## Acknowledgment
