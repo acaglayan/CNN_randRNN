@@ -63,7 +63,7 @@ Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export 
 
 2- 
 
-### Run Overall Pipeline
+### Params for Overall Run
 Before demonstrating how to run the program, let's see the command line parameters with their default values for running the program.<br/>
 ```
 --dataset-path "../data/wrgbd/" 
@@ -142,6 +142,7 @@ If the features are already saved (with the `--save-fatures 1`), it is possible 
 
 There is one other parameter `--trial`. This is a control param for multiple runs. It could be used for multiple runs to evaluate different parameters in a controlled way. 
 
+### Run Overall Pipeline
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
