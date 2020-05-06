@@ -52,7 +52,19 @@ e.g. `pip install psutil` <br />
 ## Getting Started
 ### Data Preparation
 1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
-![](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/wrgbd_view.png)
+```
+CNN_randRNN
+├── data
+│   ├── wrgbd
+│   │   │──eval-set
+│   │   │   ├──apple
+│   │   │   ├──ball
+│   │   │   ├──...
+│   │   │   ├──water_bottle
+│   │   │──split.mat
+├── src
+├── logs
+```
 
 To convert depth maps to colorized RGB-like depth representations:
 ```
