@@ -13,11 +13,6 @@ This work has been tested on the popular <a href ="https://rgbd-dataset.cs.washi
 - A soft voting approach based on individual SVM confidences for multi-modal fusion has been presented.
 - An effective depth colorization based on surface normals has been presented.
 - Clear and extendible code structure for supporting more datasets and applying to new ideas.
-## Model Zoo
-Supported backbone models and their average computational time and memory overhead for overall data processing and model learning on Washington RGB-D Object dataset are shown in the below table. These are the overall results of both train and test phases together. Experiments are performed on a workstation with AMD Ryzen 9 3900X 12-Core Processor, 3.8 GHz Base, 128 GB DDR4 RAM 2666 MHz, and NVIDIA GeForce GTX 1080 Ti graphics card with 11 GB memory. The batch size is 64 for all the models.
-
-![](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/model_table.png)
-
 
 ## Installation
 ### System Requirements
