@@ -96,8 +96,10 @@ To run the demo application with the defaul parameter values:<br/>
 python demo_scene/demo.py
 ```
 It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it by commenting/uncommenting  the related lines in the provided `demo.py` source code.
-### Data Preparation
-1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
+
+### Washington RGB-D Object Recognition
+#### Data Preparation
+Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the file structure above).
 
 To convert depth maps to colorized RGB-like depth representations:
 ```
@@ -106,13 +108,7 @@ python main_steps.py --dataset-path "../data/wrgbd/" --data-type "depthcrop" --d
 ```
 Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export PYTHONPATH=$PYTHONPATH:/home/user/path_to_project/CNN_randRNN/src/utils`). `debug-mode` with 1 runs the framework for a small proportion of data (you can choose the size with `debug-size` parameter, which sets the number of samples for each instance.) This will create colorized depth images under the `/data/wrgbd/outputs/colorized_depth_images`.
 
-2- 
-
-### Params for Overall Run
-Before demonstrating how to run the program, let's see the command line parameters with their default values for running the program.<br/>
-
-
-### Run Overall Pipeline
+#### Run Overall Pipeline
 Before demonstrating how to run the program, see the explanations for command line parameters with their default values <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>. <br/>
 To run the overall pipeline with the defaul parameter values:<br/>
 ```
@@ -120,7 +116,7 @@ python main.py
 ```
 This will train/test SVM for every 7 layers. You may want to make levels other than that of optimum ones to the comment line.
 
-### Run Individual Steps
+#### Run Individual Steps
 To run individual steps:<br/>
 ```
 sh run_steps.sh step="FIX_EXTRACTION"
@@ -130,6 +126,7 @@ python main_steps.py
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
+
 ## License
 
 ## Citation
