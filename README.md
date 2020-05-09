@@ -58,7 +58,7 @@ CNN_randRNN
 │   │   │   ├──...
 │   │   │   ├──water_bottle
 │   │   │──split.mat
-│   ├── **sunrgbd**
+│   ├── sunrgbd
 │   │   │──dataset
 │   │   │   ├──kv1
 │   │   │   ├──kv2
@@ -73,20 +73,20 @@ CNN_randRNN
 │   │   │   │  ├──train
 │   │   │──outputs
 │   │   │   ├──fine_tuning
-│   │   │   │  ├──**resnet101_Depth_Colorized_HDF5_best_checkpoint.pth**
-│   │   │   │  ├──**resnet101_RGB_JPG_best_checkpoint.pth**
+│   │   │   │  ├──resnet101_Depth_Colorized_HDF5_best_checkpoint.pth
+│   │   │   │  ├──resnet101_RGB_JPG_best_checkpoint.pth
 │   │   │   ├──overall_pipeline_run
 │   │   │   │  ├──svm_estimators
-│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l5.sav**
-│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l6.sav**
-│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l7.sav**
-│   │   │   │  │  ├──**resnet101_RGB_JPG_l5.sav**
-│   │   │   │  │  ├──**resnet101_RGB_JPG_l6.sav**
-│   │   │   │  │  ├──**resnet101_RGB_JPG_l7.sav**
+│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l5.sav
+│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l6.sav
+│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l7.sav
+│   │   │   │  │  ├──resnet101_RGB_JPG_l5.sav
+│   │   │   │  │  ├──resnet101_RGB_JPG_l6.sav
+│   │   │   │  │  ├──resnet101_RGB_JPG_l7.sav
 │   │   │   │  ├──test_images
 │   │   │   ├──random_weights
-│   │   │   │  ├──**resnet101_reduction_random_weights.pkl**
-│   │   │   │  ├──**resnet101_rnn_random_weights.pkl**
+│   │   │   │  ├──resnet101_reduction_random_weights.pkl
+│   │   │   │  ├──resnet101_rnn_random_weights.pkl
 ├── src
 ├── logs
 ```
