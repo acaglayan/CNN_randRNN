@@ -22,7 +22,7 @@ All the codes are tested with the abovementioned environment. System requirement
 * PyTorch
 * Scikit-learn
 * OpenCV
-* psutil and h5py libs.
+* psutil, h5py, and matplotlib libs. 
 We have installed these libraries with `pip` as below:
 1. Create virtual environment. <br/>
 ```
@@ -42,9 +42,59 @@ e.g. `pip install opencv-python` <br />
 5. Install `psutil` and `h5py` libs: <br />
 e.g. `pip install psutil` <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pip install h5py` <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pip install -U matplotlib` <br/>
 
 
 ## Getting Started
+### Scene Recognition Demo
+Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the below structure.
+```
+CNN_randRNN
+├── data
+│   ├── wrgbd
+│   │   │──eval-set
+│   │   │   ├──apple
+│   │   │   ├──ball
+│   │   │   ├──...
+│   │   │   ├──water_bottle
+│   │   │──split.mat
+│   ├── **sunrgbd**
+│   │   │──dataset
+│   │   │   ├──kv1
+│   │   │   ├──kv2
+│   │   │   ├──realsense
+│   │   │   ├──xtion
+│   │   │──organized-set
+│   │   │   ├──Depth_Colorized_HDF5
+│   │   │   │  ├──test
+│   │   │   │  ├──train
+│   │   │   ├──RGB_JPG
+│   │   │   │  ├──test
+│   │   │   │  ├──train
+│   │   │──outputs
+│   │   │   ├──fine_tuning
+│   │   │   │  ├──**resnet101_Depth_Colorized_HDF5_best_checkpoint.pth**
+│   │   │   │  ├──**resnet101_RGB_JPG_best_checkpoint.pth**
+│   │   │   ├──overall_pipeline_run
+│   │   │   │  ├──svm_estimators
+│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l5.sav**
+│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l6.sav**
+│   │   │   │  │  ├──**resnet101_Depth_Colorized_HDF5_l7.sav**
+│   │   │   │  │  ├──**resnet101_RGB_JPG_l5.sav**
+│   │   │   │  │  ├──**resnet101_RGB_JPG_l6.sav**
+│   │   │   │  │  ├──**resnet101_RGB_JPG_l7.sav**
+│   │   │   │  ├──test_images
+│   │   │   ├──random_weights
+│   │   │   │  ├──**resnet101_reduction_random_weights.pkl**
+│   │   │   │  ├──**resnet101_rnn_random_weights.pkl**
+├── src
+├── logs
+```
+To run the demo application with the defaul parameter values:<br/>
+```
+python demo_scene/demo.py
+```
+It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it by commenting/uncommenting  the related lines in the provided `demo.py` source code.
 ### Data Preparation
 1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
 ```
