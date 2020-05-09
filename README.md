@@ -93,9 +93,13 @@ CNN_randRNN
 ```
 To run the demo application with the defaul parameter values:<br/>
 ```
-python demo_scene/demo.py
+python demo_scene/demo.py --mode "camera"
 ```
-It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it by commenting/uncommenting  the related lines in the provided `demo.py` source code.
+ or 
+ ```
+python demo_scene/demo.py --mode "image"
+``` 
+It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it with the run `mode` selection as shown above.
 
 ### Washington RGB-D Object Recognition
 #### Data Preparation
