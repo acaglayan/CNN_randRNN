@@ -114,7 +114,7 @@ To run the overall pipeline with the defaul parameter values:<br/>
 ```
 python main.py
 ```
-This will train/test SVM for every 7 layers. You may want to make levels other than that of optimum ones to the comment line.
+This will train/test SVM for every 7 layers. You may want to make levels other than that of optimum ones to the comment lines.
 
 #### Run Individual Steps
 To run individual steps:<br/>
@@ -122,7 +122,15 @@ To run individual steps:<br/>
 sh run_steps.sh step="FIX_EXTRACTION"
 python main_steps.py
 ```
-`step` parameter of the shell command is one of `COLORIZED_DEPTH_SAVE`, `FIX_EXTRACTION`, `FIX_RECURSIVE_NN`, `FINE_TUNING`, `FINE_EXTRACTION`, and `FINE_RECURSIVE_NN`.
+`step` parameter of the shell command is one of the below parameters: 
+```
+COLORIZED_DEPTH_SAVE 
+FIX_EXTRACTION 
+FIX_RECURSIVE_NN
+FINE_TUNING
+FINE_EXTRACTION
+FINE_RECURSIVE_NN
+```
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
