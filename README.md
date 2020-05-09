@@ -22,8 +22,8 @@ All the codes are tested with the abovementioned environment. System requirement
 * PyTorch
 * Scikit-learn
 * OpenCV
-* psutil, h5py, and matplotlib libs. 
-We have installed these libraries with `pip` as below:
+* psutil, h5py, and matplotlib libs. <br/>
+We have installed these libraries with `pip` as below:<br/>
 1. Create virtual environment. <br/>
 ```
 conda create -n cnnrandrnn python=3.7
@@ -39,11 +39,12 @@ e.g. `pip install -U scikit-learn` <br />
 4. Install OpenCV library: <br />
 e.g. `pip install opencv-python` <br />
 
-5. Install `psutil` and `h5py` libs: <br />
-e.g. `pip install psutil` <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pip install h5py` <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pip install -U matplotlib` <br/>
-
+5. Install `psutil`, `h5py`, and `matplotlib` libs:
+``` 
+pip install psutil
+pip install h5py
+pip install -U matplotlib
+```
 
 ## Getting Started
 ### Scene Recognition Demo
@@ -97,19 +98,6 @@ python demo_scene/demo.py
 It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it by commenting/uncommenting  the related lines in the provided `demo.py` source code.
 ### Data Preparation
 1- Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the structure below).
-```
-CNN_randRNN
-├── data
-│   ├── wrgbd
-│   │   │──eval-set
-│   │   │   ├──apple
-│   │   │   ├──ball
-│   │   │   ├──...
-│   │   │   ├──water_bottle
-│   │   │──split.mat
-├── src
-├── logs
-```
 
 To convert depth maps to colorized RGB-like depth representations:
 ```
@@ -122,84 +110,10 @@ Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export 
 
 ### Params for Overall Run
 Before demonstrating how to run the program, let's see the command line parameters with their default values for running the program.<br/>
-```
---dataset-path "../data/wrgbd/" 
-```
-This is the root path of the dataset. <br/>
 
-```
- --features-root "outputs" 
-```
-This is the root folder for saving/loading models, features, weights, etc.<br/>
-
-```
---data-type "crop" 
-```
-Data type to process, `crop` for rgb, `depthcrop` for depth data. And `rgbd` for multi-modal fusion. <br/>
-
-```
---net-model "alexnet" 
-```
-Backbone CNN model to be employed as the feature extractor. Could be one of these: `alexnet`, `vgg16_bn`, `resnet50`, `resnet101`, and `densenet121`. <br/>
-
-```
---debug-mode 1 
-```
-This controls to run with all of the dataset (`0`) or with a small proportion of dataset (`1`). Default value is `1` to check if everything is fine with setups etc.<br/>
-
-```
---debug-size 3 
-```
-This determines the proportion size for debug-mode. The default value of `3` states that for every instance of a category, 3 samples are going to be taken to process.<br/>
-
-```
---log-dir "../logs" 
-```
-This is the root folder for saving log files.<br/>
-
-```
---batch-size 64 
-```
-You can set the batch size with this parameter.<br/>
-
-```
---split-no 1 
-```
-There are 10 splits in total for Washington RGB-D Object dataset. This indicates the running split. It should be `1` to `10`.<br/>
-
-```
---run-mode 2 
-```
-There are 3 run modes. `1` is to use the finetuned backbone models, `2` is to use fixed pretrained CNN models, and `3` is for fusion run. Before running for fusion (`3`), you should run the framework for RGB and depth first with run-mode `1` or `2`.<br/>
-
-```
---num-rnn 128 
-```
-You can set the number of random RNN with this parameter.<br/>
-
-```
---save-features 0 
-```
-If you want to save features, you can set this parameter to `1`.<br/>
-
-```
---reuse-randoms 1 
-```
-This decides whether the already saved random weights are going to be used. If there are not available saved weights, it will save the weights for later runs. Otherwise, if it is set to `0`, weights are not going to saved/load and the program generates new random weights in each run.<br/>
-
-```
---pooling "random"  
-```
-Pooling method can be one of `max`, `avg`, and `random`.<br/>
-
-```
---load-features 0  
-```
-If the features are already saved (with the `--save-fatures 1`), it is possible to load them without the need for run the whole pipeline again by setting this parameter to `1`.<br/>
-
-There is one other parameter `--trial`. This is a control param for multiple runs. It could be used for multiple runs to evaluate different parameters in a controlled way. 
 
 ### Run Overall Pipeline
+Before demonstrating how to run the program, see the explanations for command line parameters with their default values <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>. <br/>
 To run the overall pipeline with the defaul parameter values:<br/>
 ```
 python main.py
