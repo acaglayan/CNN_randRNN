@@ -76,3 +76,21 @@ Pooling method can be one of `max`, `avg`, and `random`.<br/>
 If the features are already saved (with the `--save-fatures 1`), it is possible to load them without the need for run the whole pipeline again by setting this parameter to `1`.<br/>
 
 There is one other parameter `--trial`. This is a control param for multiple runs. It could be used for multiple runs to evaluate different parameters in a controlled way. 
+
+
+#### Run Individual Steps
+To run individual steps:<br/>
+```
+sh run_steps.sh step="FIX_EXTRACTION"
+python main_steps.py
+```
+`step` parameter of the shell command is one of the below parameters: <br/>
+
+- `COLORIZED_DEPTH_SAVE` converts depth maps to colorized RGB-like representations. <br/>
+- `FIX_EXTRACTION` is for the use of fixed pretrained CNN models without training. <br/>
+- `FIX_RECURSIVE_NN` runs multiple random RNNs using fixed pretrained CNN models. <br/>
+- `FINE_TUNING` trains (finetunes) pretrained CNN models. <br/>
+- `FINE_EXTRACTION` is for the use of finetuned CNN models as backbone models. <br/>
+- `FINE_RECURSIVE_NN` runs multiple random RNNs using finetuned CNN models. <br/>
+
+Check the source code for each individual step command line parameters. See the paper for training hyperparameters.
