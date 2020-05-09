@@ -22,7 +22,7 @@ All the codes are tested with the abovementioned environment. System requirement
 * PyTorch
 * Scikit-learn
 * OpenCV
-* psutil, h5py, and matplotlib libs. <br/>
+* psutil, h5py, seaborn, and matplotlib libs. <br/>
 We have installed these libraries with `pip` as below:<br/>
 1. Create virtual environment. <br/>
 ```
@@ -39,10 +39,11 @@ e.g. `pip install -U scikit-learn` <br />
 4. Install OpenCV library: <br />
 e.g. `pip install opencv-python` <br />
 
-5. Install `psutil`, `h5py`, and `matplotlib` libs:
+5. Install `psutil`, `h5py`, `seaborn` and `matplotlib` libs:
 ``` 
 pip install psutil
 pip install h5py
+pip install seaborn
 pip install -U matplotlib
 ```
 
