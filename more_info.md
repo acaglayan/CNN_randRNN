@@ -93,4 +93,4 @@ python main_steps.py
 - `FINE_EXTRACTION` is for the use of finetuned CNN models as backbone models. <br/>
 - `FINE_RECURSIVE_NN` runs multiple random RNNs using finetuned CNN models. <br/>
 
-Check the source code for each individual step command line parameters. See the paper for training hyperparameters.
+Check the source code for each individual step's command line parameters. See the paper for training hyperparameters.
