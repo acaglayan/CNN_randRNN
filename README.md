@@ -115,22 +115,7 @@ To run the overall pipeline with the defaul parameter values:<br/>
 python main.py
 ```
 This will train/test SVM for every 7 layers. You may want to make levels other than that of optimum ones to the comment lines.
-
-#### Run Individual Steps
-To run individual steps:<br/>
-```
-sh run_steps.sh step="FIX_EXTRACTION"
-python main_steps.py
-```
-`step` parameter of the shell command is one of the below parameters: 
-```
-COLORIZED_DEPTH_SAVE 
-FIX_EXTRACTION 
-FIX_RECURSIVE_NN
-FINE_TUNING
-FINE_EXTRACTION
-FINE_RECURSIVE_NN
-```
+It is also possible to run the system step by step. See the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>. 
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
