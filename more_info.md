@@ -92,5 +92,6 @@ python main_steps.py
 - `FINE_TUNING` trains (finetunes) pretrained CNN models. <br/>
 - `FINE_EXTRACTION` is for the use of finetuned CNN models as backbone models. <br/>
 - `FINE_RECURSIVE_NN` runs multiple random RNNs using finetuned CNN models. <br/>
+- `SAVE_SUNRGBD` this re-organizes SUN RGB-D Scene dataset by copying RGB and colorized depth images into train/test splits. Note that, this works quite slowly especially for depth data. Nevertheless, it is needed to run just once. <br/>
 
 Check the source code for each individual step's command line parameters. See the paper for training hyperparameters.
