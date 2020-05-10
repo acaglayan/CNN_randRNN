@@ -61,11 +61,13 @@ CNN_randRNN
 │   │   │   ├──water_bottle
 │   │   │──split.mat
 │   ├── sunrgbd
-│   │   │──dataset
+│   │   │──SUNRGBD
 │   │   │   ├──kv1
 │   │   │   ├──kv2
 │   │   │   ├──realsense
 │   │   │   ├──xtion
+│   │   │──allsplit.mat
+│   │   │──SUNRGBDMeta.mat
 │   │   │──organized-set
 │   │   │   ├──Depth_Colorized_HDF5
 │   │   │   │  ├──test
