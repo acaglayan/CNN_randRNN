@@ -50,7 +50,7 @@ pip install -U matplotlib
 ## Getting Started
 ### Scene Recognition Demo
 Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the below structure.
-```
+<pre>
 CNN_randRNN
 ├── data
 │   ├── wrgbd
@@ -77,23 +77,23 @@ CNN_randRNN
 │   │   │   │  ├──train
 │   │   │──outputs
 │   │   │   ├──fine_tuning
-│   │   │   │  ├──resnet101_Depth_Colorized_HDF5_best_checkpoint.pth
-│   │   │   │  ├──resnet101_RGB_JPG_best_checkpoint.pth
+│   │   │   │  ├──<b>resnet101_Depth_Colorized_HDF5_best_checkpoint.pth</b>
+│   │   │   │  ├──<b>resnet101_RGB_JPG_best_checkpoint.pth</b>
 │   │   │   ├──overall_pipeline_run
 │   │   │   │  ├──svm_estimators
-│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l5.sav
-│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l6.sav
-│   │   │   │  │  ├──resnet101_Depth_Colorized_HDF5_l7.sav
-│   │   │   │  │  ├──resnet101_RGB_JPG_l5.sav
-│   │   │   │  │  ├──resnet101_RGB_JPG_l6.sav
-│   │   │   │  │  ├──resnet101_RGB_JPG_l7.sav
+│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l5.sav</b>
+│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l6.sav</b>
+│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l7.sav</b>
+│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l5.sav</b>
+│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l6.sav</b>
+│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l7.sav</b>
 │   │   │   │  ├──test_images
 │   │   │   ├──random_weights
-│   │   │   │  ├──resnet101_reduction_random_weights.pkl
-│   │   │   │  ├──resnet101_rnn_random_weights.pkl
+│   │   │   │  ├──<b>resnet101_reduction_random_weights.pkl</b>
+│   │   │   │  ├──<b>resnet101_rnn_random_weights.pkl</b>
 ├── src
 ├── logs
-```
+</pre>
 To run the demo application with the defaul parameter values:<br/>
 ```
 python demo_scene/demo.py --mode "camera"
