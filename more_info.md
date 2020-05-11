@@ -6,7 +6,7 @@ The command line parameters with their default values for running the program:<b
 This is the root path of the dataset. <br/>
 
 ```
- --features-root "outputs" 
+ --features-root "models-features" 
 ```
 This is the root folder for saving/loading models, features, weights, etc.<br/>
 
