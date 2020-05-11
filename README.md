@@ -37,7 +37,7 @@ We have installed these libraries with `pip` as below:<br/>
 1. Create virtual environment. <br/>
 ```
 conda create -n cnnrandrnn python=3.7
-source activate cnnrandrnn
+conda activate cnnrandrnn
 ```
 2. Install Pytorch according to your system preferences such as OS, package manager, and CUDA version (see more [here](https://pytorch.org/get-started/locally/)): <br />
 e.g. `pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html` <br />
