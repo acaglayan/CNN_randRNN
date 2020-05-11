@@ -96,11 +96,11 @@ CNN_randRNN
 </pre>
 To run the demo application with the defaul parameter values:<br/>
 ```
-python demo_scene/demo.py --mode "camera"
+python demo.py --mode "camera"
 ```
  or 
  ```
-python demo_scene/demo.py --mode "image"
+python demo.py --mode "image"
 ``` 
 It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it with the run `mode` selection as shown above.
 
