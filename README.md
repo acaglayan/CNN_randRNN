@@ -129,21 +129,28 @@ It is also possible to run the system step by step. See the details <a href="htt
 This codebase is presented based on Washington RGB-D object recognition. It can also be used for the SUN RGB-D Scene dataset. Please see the details for using SUN RGB-D dataset <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a>. This also guides the use of other datasets as a reference point.
 
 #### Scene Recognition Demo
-Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
-To run the demo application with the default parameter values:<br/>
-```
-python demo.py --mode "image"
-```
- or 
- ```
-python demo.py --mode "camera"
-``` 
-It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `demo_images` folder. It takes the images given in the `demo_images` by default, you can change it with the run `mode` selection as shown above.
-
-## Acknowledgment
-This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
-
-## License
+A demo application using RGB images is presented. Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
+There are two run modes. To run the demo application with the default parameters for each mode is as below:<br/>
+<table border="0">
+  <tr>
+   <td>
+    <pre>python demo.py --mode "image"</pre>  
+   </td>
+   <td>
+    <pre>python demo.py --mode "camera"</pre>
+    </td>
+ </tr>
+   <tr>
+   <td>
+    <img align="center" src="https://github.com/acaglayan/CNN_randRNN/blob/master/figures/demo_samples.png">
+   </td>
+   <td>
+    <img align="center" src="https://github.com/acaglayan/CNN_randRNN/blob/master/figures/demo_scene_recognition.gif">
+    </td>
+ </tr>
+</table>
+   
+`image` mode takes the images in the `demo_images` folder, while the `camera` modes takes camera images as inputs.
 
 ## Citation
 If you find this work useful in your research, please consider citing:
@@ -155,3 +162,7 @@ If you find this work useful in your research, please consider citing:
   year={2020}
 }
 ```
+## License
+
+## Acknowledgment
+This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
