@@ -136,7 +136,7 @@ python demo.py --mode "image"
  ```
 python demo.py --mode "camera"
 ``` 
-It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `demo_images` by default, you can change it with the run `mode` selection as shown above.
+It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `demo_images` folder. It takes the images given in the `demo_images` by default, you can change it with the run `mode` selection as shown above.
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
