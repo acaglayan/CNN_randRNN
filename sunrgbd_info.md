@@ -12,9 +12,8 @@ This copies RGB images into train/test folders by renaming files with category i
 sh run_steps.sh step="SAVE_SUNRGBD"
 python main_steps.py --dataset-path "../data/sunrgbd/" --data-type "Depth_Colorized_HDF5" --debug-mode 0
 ```
-This converts depth maps to the proposed colorized RGB-like representations using the provided camera intrinsic values and saves files in `train/test` folders and `hdf5` file format.
+This converts depth maps to the proposed colorized RGB-like representations using the provided camera intrinsic values and saves files in `train/test` folders and `hdf5` file format. See the file structure <a href="https://github.com/acaglayan/CNN_randRNN/edit/master/README.md" target="_blank">here</a> for the saved files location.
 <br/>
-See the file structure <a href="https://github.com/acaglayan/CNN_randRNN/edit/master/README.md" target="_blank">here</a> for the saved files location.
 Note that, data preparation works quite slowly especially for depth data. Nevertheless, it is needed to run just once. <br/>
 
 ### Preparing Source Codes
