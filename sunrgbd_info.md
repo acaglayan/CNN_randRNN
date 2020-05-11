@@ -99,4 +99,4 @@ There is one other parameter `--trial`. This is a control param for multiple run
 
 
 #### Run Individual Steps
-See <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a> for the details to run individual steps.
+See <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a> for the details to run individual steps.
