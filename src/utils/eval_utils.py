@@ -283,7 +283,7 @@ def organize_dirs():
 def get_params():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--task", dest="task", default="scene", choices=["object", "scene"], type=str)
-    parser.add_argument("--features-root", dest="features_root", default="outputs",
+    parser.add_argument("--features-root", dest="features_root", default="models-features",
                         help="Root folder for CNN features to load/save")
     parser.add_argument("--net-model", dest="net_model", default=Models.ResNet101, choices=Models.ALL,
                         type=str.lower, help="Pre-trained network model to be employed as the feature extractor")
