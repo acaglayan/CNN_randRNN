@@ -82,7 +82,7 @@ def get_initial_parser():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--dataset-path", dest="dataset_path", default="../data/wrgbd/",
                         help="Path to the data root")
-    parser.add_argument("--features-root", dest="features_root", default="outputs",
+    parser.add_argument("--features-root", dest="features_root", default="models-features",
                         help="Root folder for CNN features to load/save")
     parser.add_argument("--data-type", dest="data_type", default=DataTypes.Depth, choices=DataTypes.ALL,
                         type=str.lower, help="Data type to process, crop for rgb, depthcrop for depth data")
