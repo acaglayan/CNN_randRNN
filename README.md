@@ -1,7 +1,15 @@
 # When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition
+This repository presents the implementation of a general two-stage framework for RGB-D object and scene recognition taskt. The framework employs a convolutional neural network (CNN) model as the underlying feature extractor and random recursive neural network (RNN) to encode these features into high-level representations. For the details, please refer to:<br/>
+<br/>
+**When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition**<br/>
+<a href="https://github.com/acaglayan" target="_blank">Ali Caglayan</a>, <a href="https://scholar.google.com/citations?hl=en&user=VJgx61MAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Nevrez Imamoglu</a>, <a href="https://scholar.google.com/citations?hl=en&user=SbRj1qwAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Ahmet Burak Can</a>, <a href="https://www.airc.aist.go.jp/en/gsrt/" target="_blank">Ryosuke Nakamura</a>
+
+<br/>
+
 ![Overview of the two-stage framework](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/overview.png)
+
 ## Introduction
-This repository presents the implementation of a general two-stage framework that employs a convolutional neural network (CNN) model as the underlying feature extractor and random recursive neural network (RNN) to encode these features to high-level representations. A random weighted pooling approach, which is applicable to both spatial and channel wise downsampling, has been proposed by extending the idea of randomness in RNNs. Thus, the second stage of the framework presents a fully randomized stucture to encode CNN features efficiently. The framework is a general PyTorch-based codebase for RGB-D object and scene recognition and applicable to a variety of pretrained CNN models including AlexNet, VGGNet (VGGNet-16 in particular), ResNet (with two different variations ResNet-50 and ResNet-101) and DenseNet (DenseNet-101 specifically).The overall structure has been designed in a modular and extendable way through a unified CNN and RNN process. Therefore, it offers an easy and flexible use. These also can easily be extended with new capabilities and combinations with different setups and other models for implementing new ideas.
+The framework is a general PyTorch-based codebase for RGB-D object and scene recognition. The overall structure has been designed in a modular and extendable way through a unified CNN and RNN process. Therefore, it offers an easy and flexible use. These also can be extended with new capabilities and combinations with different setups and other models for implementing new ideas.
 
 This work has been tested on the popular <a href ="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">Washington RGB-D Object </a>  and <a href ="http://rgbd.cs.princeton.edu/" target="_blank">SUN RGB-D Scene</a> datasets demonstrating state-of-the-art results both in object and scene recognition tasks.  
 
@@ -9,7 +17,7 @@ This work has been tested on the popular <a href ="https://rgbd-dataset.cs.washi
 - Support both one-stage CNN feature extraction and two-stage incorporation of CNN-randRNN feature extraction.
 - Applicable to AlexNet, VGGNet-16, ResNet-50, ResNet-101, DenseNet-121 as backbone CNN models.
 - Pretrained models can be used as fixed feature extractors in a fast way. They also can be used after performing finetuning.
-- A novel random pooling strategy, which extends the uniform randomness in RNNs, is presented to cope with the high dimensionality of inputs.
+- A novel random pooling strategy, which extends the uniform randomness in RNNs and is applicable to both spatial and channel wise downsampling, is presented to cope with the high dimensionality of CNN activations.
 - A soft voting approach based on individual SVM confidences for multi-modal fusion has been presented.
 - An effective depth colorization based on surface normals has been presented.
 - Clear and extendible code structure for supporting more datasets and applying to new ideas.
@@ -48,8 +56,8 @@ pip install -U matplotlib
 ```
 
 ## Getting Started
-### Scene Recognition Demo
-Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the below structure.
+### File Structure
+The following directory structure is a reference to run the code as described in this documentation. This structure can change according to the command line parameters.
 <pre>
 CNN_randRNN
 ├── data
@@ -75,34 +83,25 @@ CNN_randRNN
 │   │   │   ├──RGB_JPG
 │   │   │   │  ├──test
 │   │   │   │  ├──train
-│   │   │──outputs
+│   │   │──models-features
 │   │   │   ├──fine_tuning
-│   │   │   │  ├──<b>resnet101_Depth_Colorized_HDF5_best_checkpoint.pth</b>
-│   │   │   │  ├──<b>resnet101_RGB_JPG_best_checkpoint.pth</b>
+│   │   │   │  ├──<b><i>resnet101_Depth_Colorized_HDF5_best_checkpoint.pth</i></b>
+│   │   │   │  ├──<b><i>resnet101_RGB_JPG_best_checkpoint.pth</i></b>
 │   │   │   ├──overall_pipeline_run
 │   │   │   │  ├──svm_estimators
-│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l5.sav</b>
-│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l6.sav</b>
-│   │   │   │  │  ├──<b>resnet101_Depth_Colorized_HDF5_l7.sav</b>
-│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l5.sav</b>
-│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l6.sav</b>
-│   │   │   │  │  ├──<b>resnet101_RGB_JPG_l7.sav</b>
-│   │   │   │  ├──test_images
+│   │   │   │  │  ├──<b><i>resnet101_Depth_Colorized_HDF5_l5.sav</i></b>
+│   │   │   │  │  ├──<b><i>resnet101_Depth_Colorized_HDF5_l6.sav</i></b>
+│   │   │   │  │  ├──<b><i>resnet101_Depth_Colorized_HDF5_l7.sav</i></b>
+│   │   │   │  │  ├──<b><i>resnet101_RGB_JPG_l5.sav</i></b>
+│   │   │   │  │  ├──<b><i>resnet101_RGB_JPG_l6.sav</i></b>
+│   │   │   │  │  ├──<b><i>resnet101_RGB_JPG_l7.sav</i></b>
+│   │   │   │  ├──demo_images
 │   │   │   ├──random_weights
-│   │   │   │  ├──<b>resnet101_reduction_random_weights.pkl</b>
-│   │   │   │  ├──<b>resnet101_rnn_random_weights.pkl</b>
+│   │   │   │  ├──<b><i>resnet101_reduction_random_weights.pkl</i></b>
+│   │   │   │  ├──<b><i>resnet101_rnn_random_weights.pkl</i></b>
 ├── src
 ├── logs
 </pre>
-To run the demo application with the defaul parameter values:<br/>
-```
-python demo.py --mode "camera"
-```
- or 
- ```
-python demo.py --mode "image"
-``` 
-It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `test_images` by default, you can change it with the run `mode` selection as shown above.
 
 ### Washington RGB-D Object Recognition
 #### Data Preparation
@@ -122,7 +121,22 @@ To run the overall pipeline with the defaul parameter values:<br/>
 python main.py
 ```
 This will train/test SVM for every 7 layers. You may want to make levels other than that of optimum ones to the comment lines.
-It is also possible to run the system step by step. See the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>. 
+It is also possible to run the system step by step. See the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>.
+
+### SUN RGB-D Scene Recognition
+This codebase is presented based on Washington RGB-D object recognition. It can also be used for the SUN RGB-D Scene dataset. Please see the details for using SUN RGB-D dataset <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a>. This also guides the use of other datasets as a reference point.
+
+#### Scene Recognition Demo
+Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
+To run the demo application with the default parameter values:<br/>
+```
+python demo.py --mode "image"
+```
+ or 
+ ```
+python demo.py --mode "camera"
+``` 
+It is possible to run demo with the images taken from your camera as inputs or by taking the images given in the `test_images` folder. It takes the images given in the `demo_images` by default, you can change it with the run `mode` selection as shown above.
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
