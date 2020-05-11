@@ -53,7 +53,7 @@ def get_demo_params():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--dataset-path", dest="dataset_path", default="../../data/sunrgbd/",
                         help="Path to the data root")
-    parser.add_argument("--features-root", dest="features_root", default="outputs/",
+    parser.add_argument("--features-root", dest="features_root", default="models-features/",
                         help="Root folder for CNN features to load/save")
     parser.add_argument("--data-type", dest="data_type", default="RGB_JPG", choices=["RGB_JPG"],
                         type=str, help="Data type to process, RGB has been given as an only sample demo type")
@@ -112,8 +112,16 @@ def take_sample_inputs(params, data_form, device, svm_estimators, model_ft, mode
 
         top_1, top_2, top_3, top_4, top_5 = tuple(sunrgbd.get_class_names(largest_conf_classes[:5]))
 
-        plt.title('Ground-truth: {}\n top-1: {} \n top-2: {} \n top-3: {} \n top-4: {} \n top-5: {}'.
-                  format(label, top_1, top_2, top_3, top_4, top_5))
+        gt_str = 'ground-truth: '.rjust(15, ' ') + label.ljust(15, ' ')
+        top_1_str = 'top-1: '.rjust(15, ' ') + top_1.ljust(15, ' ')
+        top_2_str = 'top-2: '.rjust(15, ' ') + top_2.ljust(15, ' ')
+        top_3_str = 'top-3: '.rjust(15, ' ') + top_3.ljust(15, ' ')
+        top_4_str = 'top-4: '.rjust(15, ' ') + top_4.ljust(15, ' ')
+        top_5_str = 'top-5: '.rjust(15, ' ') + top_5.ljust(15, ' ')
+
+        plt.title('{}\n{}\n{}\n{}\n{}\n{}'.
+                  format(gt_str, top_1_str, top_2_str, top_3_str,
+                         top_4_str, top_5_str),  ha='center')
         plt.show()
 
 
@@ -237,7 +245,7 @@ def run_demo(params):
     l6_svm_estimator = joblib.load(l6_svm_estimator_file)
     l7_svm_estimator = joblib.load(l7_svm_estimator_file)
 
-    test_img_dir = params.dataset_path + params.features_root + params.proceed_step + '/test_images/'
+    test_img_dir = params.dataset_path + params.features_root + params.proceed_step + '/demo_images/'
 
     save_dir = params.dataset_path + params.features_root + RunSteps.FINE_TUNING + '/'
     best_model_file = save_dir + params.net_model + '_' + params.data_type + '_best_checkpoint.pth'
