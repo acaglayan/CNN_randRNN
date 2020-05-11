@@ -3,6 +3,8 @@ This repository presents the implementation of a general two-stage framework for
 <br/>
 **When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition**<br/>
 <a href="https://github.com/acaglayan" target="_blank">Ali Caglayan</a>, <a href="https://scholar.google.com/citations?hl=en&user=VJgx61MAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Nevrez Imamoglu</a>, <a href="https://scholar.google.com/citations?hl=en&user=SbRj1qwAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Ahmet Burak Can</a>, <a href="https://www.airc.aist.go.jp/en/gsrt/" target="_blank">Ryosuke Nakamura</a>
+<br/>
+[<a href="https://arxiv.org/pdf/2004.12349" target="_blank">Paper</a>]
 
 <br/>
 
