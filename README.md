@@ -126,7 +126,7 @@ This will train/test SVM for every 7 layers. You may want to make levels other t
 It is also possible to run the system step by step. See the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>.
 
 ### SUN RGB-D Scene Recognition
-This codebase is presented based on Washington RGB-D object recognition. It can also be used for the SUN RGB-D Scene dataset. Please see the details for using SUN RGB-D dataset <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a>. This also guides the use of other datasets as a reference point.
+This codebase is presented based on Washington RGB-D object recognition. It can also be applied to SUN RGB-D Scene dataset. Please see the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a> to use SUN RGB-D Scene dataset. This can also be considered as a reference guide for the use of other datasets.
 
 #### Scene Recognition Demo
 A demo application using RGB images is presented. Download trained models and RNN random weights <a href="" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
@@ -149,7 +149,7 @@ There are two run modes. To run the demo application with the default parameters
     </td>
  </tr>
 </table>
-   
+ <br/>  
 `image` mode takes the images in the `demo_images` folder, while the `camera` modes takes camera images as inputs.
 
 ## Citation
@@ -162,6 +162,7 @@ If you find this work useful in your research, please consider citing:
   year={2020}
 }
 ```
+
 ## License
 
 ## Acknowledgment
