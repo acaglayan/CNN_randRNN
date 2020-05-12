@@ -18,6 +18,13 @@ This converts depth maps to the proposed colorized RGB-like representations usin
 Note that, data preparation works quite slowly especially for the depth data. Nevertheless, it is needed to run just once. <br/>
 
 ### Preparing Source Codes
+To make the source code suitable for the SUN RGB-D Scene dataset, some minor changes need to be done. We have evaluated the system with ResNet-101 (the best in term of recognition accuracy) backbone model. Other models can be applied as well. However, to apply multi-level fusion for other models, the best layers on the dataset need to be evaluated and assigned (`get_best_modality_layers` and `get_best_trio_layers` functions in each model). Refer to the paper for the details. Some other changes can be summarized as follows.
+
+- Unlike the 10 train/test splits of Washington RGB-D Object dataset, there are no multiple train/test splits. Therefore, there is no need for `--split-no` parameter. Therefore, the split no information should be removed from the file paths of save/load model records (e.g. `params.split_no` in `overall_struct.py`).
+
+- Dataset loaders in `base_model.py` need to be edited to SUN RGB-D dataset loader (see train/test data loaders in `eval` function). We have already provided related custom data loaders in `utils` package for both SUN RGB-D Scene and Washington RGB-D Object datasets. The same should be done in `extract_cnn_features.py` as well.
+
+- Finally, use `DataTypesSUNRGBD` instead of `DataTypes` for `--data-type` parameters and `get_data_transform` in `demo_scene/demo.py` instead of current data transforms of Washington RGB-D dataset.
 
 ### Params for Overall Run
 The command line parameters to run the overall pipeline:<br/>
