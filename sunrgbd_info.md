@@ -7,14 +7,15 @@ In order to localize the paths provided in the `SUNRGBDMeta.mat` file and to mak
 sh run_steps.sh step="SAVE_SUNRGBD"
 python main_steps.py --dataset-path "../data/sunrgbd/" --data-type "RGB_JPG" --debug-mode 0
 ```
-This copies RGB images into train/test folders by renaming files with category information according to the provided `train/test` splits.
+This copies RGB images into `train/test` folders by renaming files with category information according to the provided `train/test` splits.
 ```
 sh run_steps.sh step="SAVE_SUNRGBD"
 python main_steps.py --dataset-path "../data/sunrgbd/" --data-type "Depth_Colorized_HDF5" --debug-mode 0
 ```
 This converts depth maps to the proposed colorized RGB-like representations using the provided camera intrinsic values and saves files in `train/test` folders and `hdf5` file format. See the file structure <a href="https://github.com/acaglayan/CNN_randRNN/edit/master/README.md" target="_blank">here</a> for the saved files location.
 <br/>
-Note that, data preparation works quite slowly especially for depth data. Nevertheless, it is needed to run just once. <br/>
+
+Note that, data preparation works quite slowly especially for the depth data. Nevertheless, it is needed to run just once. <br/>
 
 ### Preparing Source Codes
 
@@ -61,11 +62,6 @@ This is the root folder for saving log files.<br/>
 You can set the batch size with this parameter.<br/>
 
 ```
---split-no 1 
-```
-There are 10 splits in total for Washington RGB-D Object dataset. This indicates the running split. It should be `1` to `10`.<br/>
-
-```
 --run-mode 2 
 ```
 There are 3 run modes. `1` is to use the finetuned backbone models, `2` is to use fixed pretrained CNN models, and `3` is for fusion run. Before running for fusion (`3`), you should run the framework for RGB and depth first with run-mode `1` or `2`.<br/>
@@ -83,7 +79,7 @@ If you want to save features, you can set this parameter to `1`.<br/>
 ```
 --reuse-randoms 1 
 ```
-This decides whether the already saved random weights are going to be used. If there are not available saved weights, it will save the weights for later runs. Otherwise, if it is set to `0`, weights are not going to saved/load and the program generates new random weights in each run.<br/>
+This decides whether the already saved random weights are going to be used. If there are not available saved weights, it will save the weights for later runs. Otherwise, if it is set to `0`, weights are not going to saved/load and the program generates new random weights for each run.<br/>
 
 ```
 --pooling "random"  
