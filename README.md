@@ -30,8 +30,7 @@ All the codes are tested with the abovementioned environment. System requirement
 ### Setup 
 `conda` has been used as the virtual environment manager and `pip` as package manager. You can use either `pip` or `conda` (or both) for package management. Before starting you need to install following libraries:
 * PyTorch
-* Scikit-learn
-* OpenCV
+* Scikit-learn and OpenCV
 * psutil, h5py, seaborn, and matplotlib libs. <br/>
 We have installed these libraries with `pip` as below:<br/>
 1. Create virtual environment. <br/>
@@ -39,15 +38,16 @@ We have installed these libraries with `pip` as below:<br/>
 conda create -n cnnrandrnn python=3.7
 conda activate cnnrandrnn
 ```
+
 2. Install Pytorch according to your system preferences such as OS, package manager, and CUDA version (see more [here](https://pytorch.org/get-started/locally/)): <br />
 e.g. `pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html` <br />
 This will install some other libs including `numpy`, `pillow`, etc. <br />
 
-3. Install `scikit-learn`: <br />
-e.g. `pip install -U scikit-learn` <br />
-
-4. Install OpenCV library: <br />
-e.g. `pip install opencv-python` <br />
+3. Install `scikit-learn` and OpenCV libraries: <br />
+```
+pip install -U scikit-learn
+pip install opencv-python
+```
 
 5. Install `psutil`, `h5py`, `seaborn` and `matplotlib` libs:
 ``` 
@@ -110,15 +110,20 @@ CNN_randRNN
 Washington RGB-D Object dataset is available <a href="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">here</a>. We have tested our framework using cropped evaluation set without extra background subtraction. Uncompress the data and place in `data/wrgbd` (see the file structure above).
 
 To convert depth maps to colorized RGB-like depth representations:
+
 ```
 sh run_steps.sh step="COLORIZED_DEPTH_SAVE"
 python main_steps.py --dataset-path "../data/wrgbd/" --data-type "depthcrop" --debug-mode 0
 ```
+
 Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export PYTHONPATH=$PYTHONPATH:/home/user/path_to_project/CNN_randRNN/src/utils`). `debug-mode` with 1 runs the framework for a small proportion of data (you can choose the size with `debug-size` parameter, which sets the number of samples for each instance.) This will create colorized depth images under the `/data/wrgbd/models-features/colorized_depth_images`.
 
 #### Run Overall Pipeline
-Before demonstrating how to run the program, see the explanations for command line parameters with their default values <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>. <br/>
-To run the overall pipeline with the defaul parameter values:<br/>
+Before demonstrating how to run the program, see the explanations for command line parameters with their default values <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>.
+<br/>
+
+To run the overall pipeline with the defaul parameter values:
+<br/>
 ```
 python main.py
 ```
