@@ -63,7 +63,7 @@ If you want to save features, you can set this parameter to `1`.<br/>
 ```
 --reuse-randoms 1 
 ```
-This decides whether the already saved random weights are going to be used. If there are not available saved weights, it will save the weights for later runs. Otherwise, if it is set to `0`, weights are not going to saved/load and the program generates new random weights in each run.<br/>
+This decides whether the already saved random weights are going to be used. If there are not available saved weights, it will save the weights for later runs. Otherwise, if it is set to `0`, weights are not going to saved/load and the program generates new random weights for each run.<br/>
 
 ```
 --pooling "random"  
