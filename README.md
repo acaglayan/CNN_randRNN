@@ -49,7 +49,7 @@ pip install -U scikit-learn
 pip install opencv-python
 ```
 
-5. Install `psutil`, `h5py`, `seaborn` and `matplotlib` libs:
+4. Install `psutil`, `h5py`, `seaborn` and `matplotlib` libs:
 ``` 
 pip install psutil
 pip install h5py
