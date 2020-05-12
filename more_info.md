@@ -95,8 +95,9 @@ python main_steps.py
 - `SAVE_SUNRGBD` this re-organizes SUN RGB-D Scene dataset by copying RGB and colorized depth images into train/test splits. Note that, this works quite slowly especially for depth data. Nevertheless, it is needed to run just once. <br/>
 
 Check the source code for each individual step's command line parameters. See the paper for training hyperparameters.
-<br/><br/>
+<br/>
 
 <p align="center">
       <a href="https://github.com/acaglayan/CNN_randRNN">Back to Home Page</a>
  </p>
+ <br/>
