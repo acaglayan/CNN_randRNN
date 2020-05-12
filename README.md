@@ -59,7 +59,7 @@ pip install -U matplotlib
 
 ## Getting Started
 ### File Structure
-The following directory structure is a reference to run the code as described in this documentation. This structure can change according to the command line parameters.
+The following directory structure is a reference to run the code as described in this documentation. This structure can be changed according to the command line parameters.
 <pre>
 CNN_randRNN
 ├── data
