@@ -150,6 +150,7 @@ There are two run modes. To run the demo application with the default parameters
  </tr>
 </table>
  <br/>  
+  
 `image` mode takes the images in the `demo_images` folder, while the `camera` modes takes camera images as inputs.
 
 ## Citation
