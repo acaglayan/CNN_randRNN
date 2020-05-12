@@ -39,11 +39,10 @@ conda create -n cnnrandrnn python=3.7
 conda activate cnnrandrnn
 ```
 
-2. Install Pytorch according to your system preferences such as OS, package manager, and CUDA version (see more [here](https://pytorch.org/get-started/locally/)): 
+2. Install Pytorch according to **your system preferences** such as OS, package manager, and CUDA version (see more details [here](https://pytorch.org/get-started/locally/)): 
 
 e.g. `pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html` 
 <br />
-
 This will install some other libs including `numpy`, `pillow`, etc. <br />
 
 3. Install `scikit-learn` and OpenCV libraries: <br />
