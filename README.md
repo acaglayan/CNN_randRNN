@@ -134,7 +134,7 @@ It is also possible to run the system step by step. See the details <a href="htt
 This codebase is presented based on Washington RGB-D object recognition. It can also be applied to SUN RGB-D Scene dataset. Please see the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a> to use SUN RGB-D Scene dataset. This can also be considered as a reference guide for the use of other datasets.
 
 #### Scene Recognition Demo
-A demo application using RGB images is presented. Download trained models and RNN random weights <a href="https://drive.google.com/open?id=1WxLEzrW_8JgebLT3Xj0hYON18NIda5-3" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
+A demo application using RGB images is presented. Download trained models and RNN random weights <a href="https://drive.google.com/file/d/1WxLEzrW_8JgebLT3Xj0hYON18NIda5-3/view?usp=sharing" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
 There are two run modes. To run the demo application with the default parameters for each mode is as below:<br/>
 <table border="0">
   <tr>
