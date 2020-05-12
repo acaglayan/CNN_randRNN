@@ -100,4 +100,3 @@ Check the source code for each individual step's command line parameters. See th
 <p align="center">
       <a href="https://github.com/acaglayan/CNN_randRNN">Back to Home Page</a>
  </p>
- <br/>
