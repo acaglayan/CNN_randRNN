@@ -170,6 +170,7 @@ If you find this work useful in your research, please consider citing:
 ```
 
 ## License
+This project is released under the MIT License (see the LICENSE file for details).
 
 ## Acknowledgment
 This  paper  is  based  on  the  results  obtained  from  a  project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
