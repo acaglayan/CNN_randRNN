@@ -40,6 +40,12 @@ class DataTypes:
     ALL = [RGB, Depth, RGBD]
 
 
+class DataTypesSUNRGBD:
+    RGB = 'RGB_JPG'
+    Depth = 'Depth_Colorized_HDF5'
+    RGBD = 'RGBD'
+
+
 class Pools:
     MAX = 'max'
     AVG = 'avg'

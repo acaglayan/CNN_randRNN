@@ -4,14 +4,8 @@ import scipy.io as io
 from torch.utils.data import Dataset
 
 import sunrgbd
-from basic_utils import RunSteps
+from basic_utils import RunSteps, DataTypesSUNRGBD
 from sunrgbd import load_props
-
-
-class DataTypes:
-    RGB = 'RGB_JPG'
-    Depth = 'Depth_Colorized_HDF5'
-    RGBD = 'RGBD'
 
 
 class SUNRGBDDataset(Dataset):
@@ -30,7 +24,7 @@ class SUNRGBDDataset(Dataset):
 
         datum = self.loader(path, self.params)
 
-        if self.params.data_type == DataTypes.Depth:
+        if self.params.data_type == DataTypesSUNRGBD.Depth:
             filename = path[path.rfind('/') + 1:-5]
         else:
             filename = path[path.rfind('/') + 1:]

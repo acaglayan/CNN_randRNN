@@ -2,7 +2,7 @@ import os
 
 import numpy as np
 
-from basic_utils import DataTypes, tensor2numpy
+from basic_utils import DataTypesSUNRGBD
 
 class_id_to_name = {
     "0": "bathroom",
@@ -65,7 +65,7 @@ def load_props(params, path, split):
     label = np.loadtxt(os.path.join(instance_path, 'scene.txt'), dtype=str)
 
     data_type = params.data_type
-    if data_type == DataTypes.RGB:
+    if data_type == DataTypesSUNRGBD.RGB:
         img_dir_name = 'image/'
     else:
         img_dir_name = 'depth/'

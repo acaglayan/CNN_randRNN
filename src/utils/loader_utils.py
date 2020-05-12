@@ -4,7 +4,7 @@ import h5py
 import numpy as np
 from PIL import Image
 
-from basic_utils import RunSteps, DataTypes
+from basic_utils import RunSteps, DataTypes, DataTypesSUNRGBD
 from depth_utils import colorized_surfnorm
 
 
@@ -37,7 +37,7 @@ def custom_loader(path, params):
 
 
 def sunrgbd_loader(path, params):
-    if params.data_type == "Depth_Colorized_HDF5":
+    if params.data_type == DataTypesSUNRGBD.Depth:
         data_type = 'sunrgbd'
         img_file = h5py.File(path, 'r')
         return np.asarray(img_file[data_type], dtype=np.float32)

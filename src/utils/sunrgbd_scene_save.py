@@ -6,7 +6,7 @@ import numpy as np
 
 from basic_utils import profile
 from depth_utils import colorized_surfnorm_sunrgbd
-from sunrgbd_loader import DataTypes, SUNRGBDDataset
+from sunrgbd_loader import DataTypesSUNRGBD, SUNRGBDDataset
 
 
 @profile
@@ -24,7 +24,7 @@ def process_dataset_save(params):
 
         for sunrgbd_img in all_dataset[phase].data:
             result_filename = results_dir + '/' + sunrgbd_img.get_fullname()
-            if params.data_type == DataTypes.Depth:
+            if params.data_type == DataTypesSUNRGBD.Depth:
                 result_filename += '.hdf5'
                 with h5py.File(result_filename, 'w') as f:
                     f.create_dataset(data_type,
