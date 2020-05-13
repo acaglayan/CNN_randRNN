@@ -1,5 +1,5 @@
 # When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition
-This repository presents the implementation of a general two-stage framework for RGB-D object and scene recognition taskt. The framework employs a convolutional neural network (CNN) model as the underlying feature extractor and random recursive neural network (RNN) to encode these features into high-level representations. For the details, please refer to:<br/>
+This repository presents the implementation of a general two-stage framework for RGB-D object and scene recognition tasks. The framework employs a convolutional neural network (CNN) model as the underlying feature extractor and random recursive neural network (RNN) to encode these features into high-level representations. For the details, please refer to:<br/>
 <br/>
 **When CNNs Meet Random RNNs: Towards Multi-Level Analysis for RGB-D Object and Scene Recognition**<br/>
 <a href="https://github.com/acaglayan" target="_blank">Ali Caglayan</a>, <a href="https://scholar.google.com/citations?hl=en&user=VJgx61MAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Nevrez Imamoglu</a>, <a href="https://scholar.google.com/citations?hl=en&user=SbRj1qwAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Ahmet Burak Can</a>, <a href="https://www.airc.aist.go.jp/en/gsrt/" target="_blank">Ryosuke Nakamura</a>
