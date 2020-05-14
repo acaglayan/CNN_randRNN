@@ -11,7 +11,7 @@ This repository presents the implementation of a general two-stage framework for
 ![Overview of the two-stage framework](https://github.com/acaglayan/CNN_randRNN/blob/master/figures/overview.png)
 
 ## Introduction
-The framework is a general PyTorch-based codebase for RGB-D object and scene recognition. The overall structure has been designed in a modular and extendable way through a unified CNN and RNN process. Therefore, it offers an easy and flexible use. These also can be extended with new capabilities and combinations with different setups and other models for implementing new ideas.
+The framework is a general PyTorch-based codebase for RGB-D object and scene recognition. The overall structure has been designed in a modular and extendable way through a unified CNN and RNN process. Therefore, it offers an easy and flexible use. These also can be extended with new capabilities and combinations with different setups, and employing other models for implementing new ideas.
 
 This work has been tested on the popular <a href ="https://rgbd-dataset.cs.washington.edu/dataset.html" target="_blank">Washington RGB-D Object </a>  and <a href ="http://rgbd.cs.princeton.edu/" target="_blank">SUN RGB-D Scene</a> datasets demonstrating state-of-the-art results both in object and scene recognition tasks.  
 
@@ -26,10 +26,10 @@ This work has been tested on the popular <a href ="https://rgbd-dataset.cs.washi
 
 ## Installation
 ### System Requirements
-System requirements for each models are reported on the paper. Ideally, it would be better if you have a multi-core processor, 32 GB RAM, graphics card with at least 10 GB memory, and enough disk space to store models, features, etc. depending on your saving choices and initial parameters.
+System requirements for each models are reported in the paper. Ideally, it would be better to have a multi-core processor, 32 GB RAM, graphics card with at least 10 GB memory, and enough disk space to store models, features, etc. depending on saving choices and initial parameters.
 
 ### Setup 
-`conda` has been used as the virtual environment manager and `pip` as package manager. You can use either `pip` or `conda` (or both) for package management. Before starting you need to install following libraries:
+`conda` has been used as the virtual environment manager and `pip` as package manager. It is possible to use either `pip` or `conda` (or both) for package management. Before starting, it is needed to install following libraries:
 * PyTorch
 * Scikit-learn and OpenCV
 * psutil, h5py, seaborn, and matplotlib libs. <br/>
@@ -123,7 +123,7 @@ Note that you might need to export `/src/utils` to the PYTHONPATH (e.g. `export 
 Before demonstrating how to run the program, see the explanations for command line parameters with their default values <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/more_info.md"> here</a>.
 <br/>
 
-To run the overall pipeline with the defaul parameter values:
+To run the overall pipeline with the default parameter values:
 <br/>
 ```
 python main.py
@@ -135,8 +135,8 @@ It is also possible to run the system step by step. See the details <a href="htt
 This codebase is presented based on Washington RGB-D object recognition. It can also be applied to SUN RGB-D Scene dataset. Please see the details <a href="https://github.com/acaglayan/CNN_randRNN/blob/master/sunrgbd_info.md"> here</a> to use SUN RGB-D Scene dataset. This can also be considered as a reference guide for the use of other datasets.
 
 #### Scene Recognition Demo
-A demo application using RGB images is presented. Download trained models and RNN random weights <a href="https://drive.google.com/file/d/1WxLEzrW_8JgebLT3Xj0hYON18NIda5-3/view?usp=sharing" target="__blank"> here <a/>. Uncompress the folder and place as the  file structure given above.
-There are two run modes. To run the demo application with the default parameters for each mode is as below:<br/>
+A demo application using RGB images is presented. Download trained models and RNN random weights <a href="https://drive.google.com/file/d/1WxLEzrW_8JgebLT3Xj0hYON18NIda5-3/view?usp=sharing" target="__blank"> here<a/>. Uncompress the folder and place as the  file structure given above.
+There are two run modes. Run the demo application with the default parameters for each mode as below:<br/>
 <table border="0">
   <tr>
    <td>
