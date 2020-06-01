@@ -1,6 +1,6 @@
 import os
 
-from basic_utils import RunSteps, PrForm, DataTypes, Models, Pools
+from basic_utils import RunSteps, PrForm, DataTypes, Models, Pools, DataTypesSUNRGBD
 from alexnet_model import AlexNet
 from densenet_model import DenseNet
 from extract_cnn_features import fixed_extraction, finetuned_extraction
@@ -66,15 +66,14 @@ def is_cnn_rnn_features_available(params, cnn):
 
 
 def save_sunrgbd_scene():
-    from sunrgbd_loader import DataTypes as sunrgbd_datatype
     parser = get_initial_parser()
     params = parser.parse_args()
     params.debug_mode = 0
     params.dataset_path = "../data/sunrgbd/"
     if params.data_type == DataTypes.RGB:
-        params.data_type = sunrgbd_datatype.RGB
+        params.data_type = DataTypesSUNRGBD.RGB
     elif params.data_type == DataTypes.Depth:
-        params.data_type = sunrgbd_datatype.Depth
+        params.data_type = DataTypesSUNRGBD.Depth
     else:
         print('{}{}The parameter {}--data-type{} should be {} RGB or Depth{}!{}'.
               format(PrForm.BOLD, PrForm.RED, PrForm.BLUE, PrForm.RED, PrForm.GREEN, PrForm.RED, PrForm.END_FORMAT))
